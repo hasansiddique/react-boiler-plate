@@ -1,5 +1,5 @@
 import axios from 'axios';
-import merge from 'lodash/merge';
+import { merge } from 'lodash';
 
 import transformKeys from '../transformKeys';
 

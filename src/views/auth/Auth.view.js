@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const Auth = ({ getUser }) => {
   useEffect(() => {
@@ -7,10 +7,7 @@ const Auth = ({ getUser }) => {
       password: 'fbr@123',
       user_type_id: 1,
       userName: 'hasan.wanclouds@gmail.com',
-    })
-      .then((res) => {
-        console.log(res);
-      });
+    });
   });
 
   return (

@@ -9,13 +9,13 @@ import Layout from './views/layout/Layout.view';
 export const store = configureStore();
 
 const App = () => (
-    <Provider store={store}>
-      <BrowserRouter>
-        <BreadcrumbsProvider>
-          <Layout />
-        </BreadcrumbsProvider>
-      </BrowserRouter>
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <BreadcrumbsProvider>
+        <Layout />
+      </BreadcrumbsProvider>
+    </BrowserRouter>
+  </Provider>
 );
 
 export default App;

@@ -1,10 +1,12 @@
-import each from 'lodash/each';
-import isEmpty from 'lodash/isEmpty';
-import isArray from 'lodash/isArray';
-import isObject from 'lodash/isObject';
-import isString from 'lodash/isString';
-import camelCase from 'lodash/camelCase';
-import snakeCase from 'lodash/snakeCase';
+import {
+  each,
+  isEmpty,
+  isArray,
+  isObject,
+  isString,
+  camelCase,
+  snakeCase,
+} from 'lodash';
 
 const transform = (body, transformFn) => {
   const transformObj = (obj) => {
