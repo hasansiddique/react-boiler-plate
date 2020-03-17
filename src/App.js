@@ -3,6 +3,8 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
 
+import './assets/styles/app.scss';
+
 import configureStore from './state/configureStore';
 import Layout from './views/layout/Layout.view';
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Loadable from 'react-loadable';
 import { BreadcrumbsItem } from 'react-breadcrumbs-dynamic';
@@ -8,6 +7,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import { MAINTENANCE_MODE } from '../../common/constants';
 
 import classes from './Layout.view.scss';
+import ProtectedComponent from '../../components/ProtectedComponent';
 
 const Loading = () => 'Loading...';
 
@@ -36,7 +36,14 @@ class Layout extends React.PureComponent {
                 ? <Route path="/" component={Maintenance} />
                 : (
                   <Switch>
-                    <Route exact path="/" component={Auth} />
+                    <Route
+                      path="/user"
+                      component={Auth}
+                    />
+                    <ProtectedComponent
+                      path="/"
+                      component={Auth}
+                    />
                   </Switch>
                 )}
             </div>
@@ -47,16 +54,9 @@ class Layout extends React.PureComponent {
   }
 }
 
-Layout.defaultProps = {
-  supportFeature: {},
-  tableauDashboard: {},
-};
+Layout.defaultProps = {};
 
 Layout.propTypes = {};
-
-Layout.contextTypes = {
-  router: PropTypes.object,
-};
 
 const mapStateToProps = () => ({});
 
