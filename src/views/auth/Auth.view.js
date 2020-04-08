@@ -5,7 +5,7 @@ import { FETCHING } from '../../common/constants';
 const Authentication = ({ loginUser, requestingLogin }) => {
   useEffect(async () => {
     loginUser({
-      username: 'faiz@wanclouds.net',
+      email: 'faiz@wanclouds.net',
       password: 'khanfaiz',
     });
   }, [loginUser]);
