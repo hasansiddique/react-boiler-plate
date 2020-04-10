@@ -1,14 +1,20 @@
 import axios from 'axios';
 import { merge } from 'lodash';
 
+import storage from '../storage';
 import transformKeys from '../transformKeys';
 
 const getHeaders = (headers) => {
+  const user = storage.get('user');
   const defaultHeaders = {
     Accept: 'application/vnd.cia.v1+json',
     'Content-Type': 'application/vnd.cia.v1+json',
-    Authorization: localStorage.getItem('token'),
   };
+
+  if (user && user.token) {
+    merge(headers, { Authorization: `Bearer ${user.token.accessToken}` });
+  }
+
   return merge({}, defaultHeaders, headers);
 };
 

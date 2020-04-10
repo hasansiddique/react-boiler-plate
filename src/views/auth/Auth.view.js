@@ -1,17 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import { Card } from 'antd';
 import PropTypes from 'prop-types';
-import { FETCHING } from '../../common/constants';
 
-const Authentication = ({ loginUser, requestingLogin }) => {
-  useEffect(async () => {
-    loginUser({
-      email: 'faiz@wanclouds.net',
-      password: 'khanfaiz',
-    });
-  }, [loginUser]);
+import authRoutes from './authRoutes';
 
+const Authentication = ({
+  match,
+  loginUser,
+  logoutUser,
+  isLoggingIn,
+  isLoggedOut,
+  registerUser,
+  isLoggingOut,
+  isRegistering,
+  verifyUserEmail,
+  isEmailVerified,
+  isRegisterSuccess,
+  userPasswordReset,
+  resendEmailVerification,
+}) => {
   return (
-    <div id="auth">
+    <div key="auth-view" id="auth">
       <div className="auth-wrapper">
         <section className="auth-content">
 
@@ -20,7 +29,23 @@ const Authentication = ({ loginUser, requestingLogin }) => {
           </div>
 
           <div className="auth-component">
-            {requestingLogin === FETCHING ? 'Fetching...' : 'Hello'}
+            <Card>
+              {authRoutes(
+                match,
+                loginUser,
+                logoutUser,
+                isLoggingIn,
+                isLoggedOut,
+                registerUser,
+                isLoggingOut,
+                isRegistering,
+                verifyUserEmail,
+                isEmailVerified,
+                isRegisterSuccess,
+                userPasswordReset,
+                resendEmailVerification,
+              )}
+            </Card>
           </div>
 
         </section>
@@ -32,11 +57,26 @@ const Authentication = ({ loginUser, requestingLogin }) => {
   );
 };
 
+Authentication.contextTypes = {
+  router: PropTypes.object,
+};
+
 Authentication.defaultProps = {};
 
 Authentication.propTypes = {
+  match: PropTypes.object.isRequired,
   loginUser: PropTypes.func.isRequired,
-  requestingLogin: PropTypes.bool.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  isLoggedOut: PropTypes.bool.isRequired,
+  isLoggingIn: PropTypes.bool.isRequired,
+  isLoggingOut: PropTypes.bool.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  isRegistering: PropTypes.bool.isRequired,
+  isEmailVerified: PropTypes.bool.isRequired,
+  verifyUserEmail: PropTypes.func.isRequired,
+  isRegisterSuccess: PropTypes.bool.isRequired,
+  userPasswordReset: PropTypes.func.isRequired,
+  resendEmailVerification: PropTypes.func.isRequired,
 };
 
 Authentication.styles = {

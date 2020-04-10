@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import { BreadcrumbsProvider } from 'react-breadcrumbs-dynamic';
 
 import './assets/styles/app.scss';
@@ -12,11 +13,11 @@ export const store = configureStore();
 
 const App = () => (
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={createBrowserHistory()}>
       <BreadcrumbsProvider>
         <Layout />
       </BreadcrumbsProvider>
-    </BrowserRouter>
+    </Router>
   </Provider>
 );
 

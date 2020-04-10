@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.use(
     '/v1',
     createProxyMiddleware({
-      target: 'https://bleeding-netorc.wanclouds.net/',
+      target: 'http://167.99.149.199/',
       changeOrigin: true,
     }),
   );

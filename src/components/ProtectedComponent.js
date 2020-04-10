@@ -1,30 +1,37 @@
 import React from 'react';
-import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 
 import storage from '../common/storage';
 
-const ProtectedComponent = ({ Component, isAuthenticated }) => (
+const ProtectedComponent = ({
+  path,
+  exact,
+  Component,
+  isAuthenticated,
+}) => (
   <Route
+    path={path}
+    exact={exact}
     render={() => (
-      (isAuthenticated || get(storage.get('user'), 'token'))
+      (isAuthenticated || storage.get('user') !== undefined)
         ? <Component />
-        : <Redirect to="/user" />
+        : <Redirect to="/user/login" />
     )}
   />
 );
 
 ProtectedComponent.defaultProps = {
   isAuthenticated: false,
+  exact: false,
+  path: '',
 };
 
 ProtectedComponent.propTypes = {
-  Component: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.array,
-  ]).isRequired,
+  Component: PropTypes.any.isRequired,
   isAuthenticated: PropTypes.bool,
+  path: PropTypes.string,
+  exact: PropTypes.bool,
 };
 
 export default ProtectedComponent;

@@ -23,6 +23,12 @@ export const UNAUTHORIZED = 'UNAUTHORIZED';
 export const MAINTENANCE_MODE = 'MAINTENANCE_MODE';
 export const CANCELED = 'CANCELED';
 
+export const EMAIL_VERIFYING = 'EMAIL_VERIFYING';
+export const EMAIL_VERIFIED = 'EMAIL_VERIFIED';
+export const EMAIL_VERIFICATION_CONFLICT = 'EMAIL_VERIFICATION_CONFLICT';
+
+export const AUTH_ROUTES = ['/user', '/user/login', '/user/register', '/user/forgot-password', '/user/reset-password', '/user/verify/:token'];
+
 export const POLL_OPERATION = {
   SVC_CREATE: 'SVC_CREATE',
   SVC_UPDATE: 'SVC_UPDATE',

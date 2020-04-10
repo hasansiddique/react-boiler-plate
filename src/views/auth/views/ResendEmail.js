@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 
 const FormItem = Form.Item;
 
-const ForgotPassword = ({ isLoggingIn, handleSubmit }) => {
+const ResendEmail = ({ isLoggingIn, handleSubmit }) => {
   const onFinish = (values) => {
     handleSubmit(values);
   };
   return [
-    <h2 key={1}>Forgot Password</h2>,
+    <h2 key={1}>Resend Email</h2>,
     <Form onFinish={onFinish} key={2}>
       <Form.Item
         name="email"
@@ -32,23 +32,19 @@ const ForgotPassword = ({ isLoggingIn, handleSubmit }) => {
           htmlType="submit"
           className="login-form-button"
         >
-          {isLoggingIn ? 'Sending Email...' : 'Send Reset Link'}
+          {isLoggingIn ? 'Sending Email...' : 'Rsend Email'}
         </Button>
         Or
         {' '}
-        <Link to="/user/login" href="/user/register">Login</Link>
+        <Link to="/user/login">Login</Link>
       </FormItem>
     </Form>,
   ];
 };
 
-ForgotPassword.propTypes = {
+ResendEmail.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   isLoggingIn: PropTypes.bool.isRequired,
 };
 
-ForgotPassword.defaultProps = {};
-
-ForgotPassword.styles = {};
-
-export default ForgotPassword;
+export default ResendEmail;
