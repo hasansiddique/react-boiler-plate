@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import React, { Fragment, useEffect } from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 
-import AppRoutes from '../../appRoutes';
+import AppRoutes from '../../AppRoutes';
 import { getUser } from '../auth/auth.api';
 import storage from '../../common/storage';
 import { AUTH_ROUTES } from '../../common/constants';
@@ -51,7 +51,7 @@ Layout.defaultProps = {
 
 Layout.propTypes = {
   isAuthenticated: PropTypes.bool,
-  getUser: PropTypes.func.isRequired,
+  getUser: PropTypes.func,
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };

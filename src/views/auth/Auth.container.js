@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Auth from './Auth.view';
+import Authentication from './Auth.view';
 import {
   loginUser,
   logoutUser,
@@ -22,25 +22,27 @@ const mapStateToProps = (state) => ({
   isRegisterSuccess: state.getIn(['auth', 'isRegisterSuccess']),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  logoutUser: () => {
-    dispatch(logoutUser());
-  },
-  loginUser: (payload) => {
-    dispatch(loginUser((payload)));
-  },
-  registerUser: (payload) => {
-    dispatch(registerUser(payload));
-  },
-  verifyUserEmail: (token) => {
-    dispatch(verifyUserEmail(token));
-  },
-  userPasswordReset: (token) => {
-    dispatch(userPasswordReset(token));
-  },
-  resendEmailVerification: (token) => {
-    dispatch(resendEmailVerification(token));
-  },
-});
+const mapDispatchToProps = (dispatch) => {
+  return ({
+    logoutUser: () => {
+      dispatch(logoutUser());
+    },
+    loginUser: (payload) => {
+      dispatch(loginUser((payload)));
+    },
+    registerUser: (payload) => {
+      dispatch(registerUser(payload));
+    },
+    verifyUserEmail: (token) => {
+      dispatch(verifyUserEmail(token));
+    },
+    userPasswordReset: (token) => {
+      dispatch(userPasswordReset(token));
+    },
+    resendEmailVerification: (token) => {
+      dispatch(resendEmailVerification(token));
+    },
+  });
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Authentication);

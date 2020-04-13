@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-import Auth from './views/auth/Auth.container';
+import Authentication from './views/auth/Auth.container';
 import { AUTH_ROUTES } from './common/constants';
 import Dashboard from './views/dashboard/Dashboard.container';
 import ProtectedComponent from './components/ProtectedComponent';
@@ -15,7 +15,7 @@ const AppRoutes = () => [
   />,
   <Route
     exact
-    component={Auth}
+    component={Authentication}
     path={AUTH_ROUTES}
     key="authentication"
   />,
