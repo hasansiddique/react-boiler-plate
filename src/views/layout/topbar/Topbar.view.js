@@ -32,7 +32,7 @@ const TopBar = ({ user }) => {
       >
         <Menu.Item key="logo" style={styles.logoItem}>
           <Link to="/dashboard">
-            <img src="" alt="" height={30} />
+            <img src="" alt="dashboard-img" height={30} />
           </Link>
         </Menu.Item>
         <SubMenu
@@ -48,13 +48,12 @@ const TopBar = ({ user }) => {
               {' '}
               {user.name.toUpperCase()}
             </span>
-            )}
+          )}
         >
           <Menu.ItemGroup>
             <Menu.Item key="2">
               <Link to="/user/logout">
                 <LogoutOutlined />
-                {' '}
                 Logout
               </Link>
             </Menu.Item>

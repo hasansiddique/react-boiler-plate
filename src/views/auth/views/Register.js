@@ -14,8 +14,9 @@ const Register = ({ handleSubmit, isRegistering, isRegisterSuccess }) => {
   const onFinish = (values) => {
     handleSubmit(values);
   };
+
   return [
-    <div>
+    <div key="div1">
       {isRegisterSuccess
         ? (
           <Result
@@ -30,7 +31,7 @@ const Register = ({ handleSubmit, isRegistering, isRegisterSuccess }) => {
           />
         )
         : (
-          <div>
+          <div key="div2">
             <h2 key={1}>Register</h2>
             <Form
               onFinish={onFinish}
@@ -70,13 +71,12 @@ const Register = ({ handleSubmit, isRegistering, isRegisterSuccess }) => {
                     message: 'Please input your password!',
                   },
                   () => ({
-                    validator(rule, value, callback) {
+                    validator(rule, value) {
                       const validation = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[`~!@#$%^&*)(+=,./?><';:])(?!.*["_]).{8,}$/;
                       if (!validation.test(value)) {
-                        callback('Password must be at least 8 characters long and must contain at least 1 alphabet, 1 integer and 1 special character');
-                      } else {
-                        callback();
+                        return Promise.resolve('Password must be at least 8 characters long and must contain at least 1 alphabet, 1 integer and 1 special character');
                       }
+                      return Promise.reject();
                     },
                   }),
                 ]}

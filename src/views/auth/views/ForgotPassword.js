@@ -11,6 +11,7 @@ const ForgotPassword = ({ isLoggingIn, handleSubmit }) => {
   const onFinish = (values) => {
     handleSubmit(values);
   };
+
   return [
     <h2 key={1}>Forgot Password</h2>,
     <Form onFinish={onFinish} key={2}>

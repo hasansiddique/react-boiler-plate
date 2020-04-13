@@ -11,6 +11,7 @@ const ResendEmail = ({ isLoggingIn, handleSubmit }) => {
   const onFinish = (values) => {
     handleSubmit(values);
   };
+
   return [
     <h2 key={1}>Resend Email</h2>,
     <Form onFinish={onFinish} key={2}>

@@ -30,7 +30,7 @@ ProtectedComponent.defaultProps = {
 ProtectedComponent.propTypes = {
   Component: PropTypes.any.isRequired,
   isAuthenticated: PropTypes.bool,
-  path: PropTypes.string,
+  path: PropTypes.array,
   exact: PropTypes.bool,
 };
 
