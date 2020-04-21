@@ -75,13 +75,7 @@ export const loginUser = (payload) => {
       return res;
     } catch (err) {
       dispatch(userLoginFailure(err));
-      if (err.response.status === HTTP_STATUS.UNAUTHORIZED) {
-        openNotification({
-          type: 'error',
-          title: 'User Login',
-          description: 'Invalid Login credentials!',
-        });
-      } else if (err.response.status === HTTP_STATUS.NOT_FOUND) {
+      if (err.response.status === HTTP_STATUS.UNAUTHORIZED || HTTP_STATUS.NOT_FOUND) {
         openNotification({
           type: 'error',
           title: 'User Login',
@@ -129,11 +123,9 @@ export const registerUser = (payload) => {
 
 export const logoutUser = () => {
   return async (dispatch) => {
-    const userId = get(storage.get('user'), 'id');
-
     dispatch(requestUserLogout());
-
     try {
+      const userId = get(storage.get('user'), 'id');
       const res = await request.post(`/v1/users/${userId}/logout`);
       dispatch(userLogoutSuccess());
       storage.clear();

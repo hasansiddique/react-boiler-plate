@@ -24,6 +24,7 @@ import {
   requestResendUserVerification,
   resendUserVerificationSuccess,
   resendUserVerificationFailure,
+
 } from './auth.actions';
 import {
   FAILURE,
@@ -38,9 +39,9 @@ const defaultState = Map({
   user: null,
   error: null,
   isLoggingIn: false,
-  isLoggedOut: false,
   requestingLogin: '',
   isLoggingOut: false,
+  isLoggedOut: false,
   isEmailVerified: '',
   isRegistering: false,
   isAuthenticated: false,
@@ -73,7 +74,6 @@ const reducer = createReducer({
       .set('requestingLogin', FAILURE)
       .set('isLoggingIn', false);
   },
-
   [requestUserLogout]: (state) => {
     return state
       .set('isAuthenticated', false)

@@ -1,28 +1,28 @@
-import { withRouter, Redirect } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { withRouter, Redirect } from 'react-router-dom';
 import { Spin } from 'antd';
 
 import storage from '../../../common/storage';
 
-const Logout = ({ isLoggedOut, isLoggingOut, logoutUser }) => {
+const LogOut = ({ logOutUser, isLoggingOut, isLoggedOut }) => {
   useEffect(() => {
     if (storage.get('user')) {
-      logoutUser();
+      logOutUser();
     }
-  });
+  }, []);
 
   return (
     <>
-      {isLoggingOut && <Spin text="Logging Out..." style={{ marginTop: '50px' }} />}
+      {isLoggingOut && <Spin tip="Logging Out..." style={{ marginTop: '50px' }} />}
       {isLoggedOut && <Redirect to="/user/login" />}
     </>
   );
 };
 
-Logout.propTypes = {
-  logoutUser: PropTypes.func.isRequired,
+LogOut.propTypes = {
+  logOutUser: PropTypes.func.isRequired,
   isLoggedOut: PropTypes.bool.isRequired,
   isLoggingOut: PropTypes.bool.isRequired,
 };
-export default withRouter(Logout);
+export default withRouter(LogOut);
